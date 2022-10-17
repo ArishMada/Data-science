@@ -7,9 +7,6 @@ from sklearn import metrics
 
 kidneyData = pd.read_csv("kidney_disease.csv")
 
-kidneyData.dropna(subset=["sc"], inplace=True)
-kidneyData.dropna(subset=["htn"], inplace=True)
-
 # replacing nominal values with equivalent float
 kidneyData["rbc"] = kidneyData["rbc"].replace(to_replace=["normal", "abnormal"],
                                               value=[1, 0])
@@ -50,7 +47,7 @@ clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 print(f'Accuracy:{metrics.accuracy_score(y_test, y_pred) * 100}%')
 
-
+# plotting with only points
 # plt.scatter(kidneyData["age"][kidneyData["classification"] == 1], kidneyData["hemo"][kidneyData["classification"] == 1],
 #             color='red', marker='o', label='kidney disease')
 # plt.scatter(kidneyData["age"][kidneyData["classification"] == 0], kidneyData["hemo"][kidneyData["classification"] == 0],
@@ -95,7 +92,6 @@ ax.set_ylabel('hemoglobin number')
 ax.set_xlabel('age')
 plt.locator_params('x', nbins=20)
 ax.locator_params('y', nbins=10)
-print(max(kidneyData["hemo"]))
 ax.set_title(title)
 ax.legend()
 plt.show()
