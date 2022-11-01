@@ -35,4 +35,4 @@ df["Thal"] = df["ChestPain"].replace(to_replace=["fixed", "normal", "reversable"
                                               value=[0, 1, 2])
 df["AHD"] = df["AHD"].replace(to_replace=["No", "Yes"],
                                               value=[0, 1])
-# print(df)
+print(df.corr())
