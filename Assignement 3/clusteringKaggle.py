@@ -7,7 +7,7 @@ sns.set()
 from sklearn.cluster import KMeans
 
 data = pd.read_csv('wine-clustering.csv')
-x = data.iloc[0:1000, 6:9:2]
+x = data.iloc[:, 6:9:2]
 
 print(x)
 
@@ -19,7 +19,7 @@ print(identified_clusters)
 #
 data_with_clusters = x
 data_with_clusters['Clusters'] = identified_clusters
-#
+
 plt.scatter(x['Flavanoids'], x['Proanthocyanins'], c='white', marker='o',
             edgecolor='black', s=50)
 
